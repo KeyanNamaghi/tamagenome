@@ -6,10 +6,10 @@ export const genomeA = [
     range: 15
   },
   {
-    // blue
-    r: 17,
-    g: 40,
-    b: 170,
+    // 221, 46, 180
+    r: 221,
+    g: 46,
+    b: 180,
     range: 10
   }
 ]
