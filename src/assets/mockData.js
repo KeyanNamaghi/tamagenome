@@ -1,9 +1,8 @@
 export const genomeA = [
   {
-    // Purple
-    r: 170,
-    g: 40,
-    b: 170,
+    r: 207,
+    g: 66,
+    b: 86,
     range: 15
   },
   {
@@ -17,15 +16,15 @@ export const genomeA = [
 
 export const genomeB = [
   {
-    r: 220,
-    g: 30,
-    b: 160,
+    r: 207,
+    g: 66,
+    b: 86,
     range: 12
   },
   {
-    r: 12,
+    r: 206,
     g: 30,
-    b: 160,
+    b: 86,
     range: 13
   }
 ]

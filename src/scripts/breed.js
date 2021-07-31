@@ -4,7 +4,7 @@ function getRandomInt(val, range) {
   return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 }
 
-const randomiseGenome = (gene) => {
+const calculateChildGene = (gene) => {
   return {
     r: getRandomInt(gene.r, gene.range),
     g: getRandomInt(gene.g, gene.range),
@@ -13,34 +13,29 @@ const randomiseGenome = (gene) => {
   }
 }
 
-export const createGenome = (genomeA, genomeB) => {
-  let domA = false
-  let domB = false
+const fiftyFiftyChance = () => Math.random() > 0.5
+
+export const createNewGene = (geneA, geneB) => {
+  let domA = fiftyFiftyChance()
+  let domB = fiftyFiftyChance()
   const genome = []
 
-  if (Math.random() < 0.5) {
-    domA = true
-  }
-
-  if (Math.random() < 0.5) {
-    domB = true
-  }
-
   if ((domA && domB) || (!domA && !domB)) {
-    if (Math.random() > 0.5) {
-      genome.push(randomiseGenome(genomeA[domA ? 0 : 1]))
-      genome.push(randomiseGenome(genomeB[domA ? 0 : 1]))
+    // Equal priority in ordering
+    if (fiftyFiftyChance()) {
+      genome.push(calculateChildGene(geneA[domA ? 0 : 1]))
+      genome.push(calculateChildGene(geneB[domA ? 0 : 1]))
     } else {
-      genome.push(randomiseGenome(genomeB[domA ? 0 : 1]))
-      genome.push(randomiseGenome(genomeA[domA ? 0 : 1]))
+      genome.push(calculateChildGene(geneB[domA ? 0 : 1]))
+      genome.push(calculateChildGene(geneA[domA ? 0 : 1]))
     }
   } else {
     if (domA) {
-      genome.push(randomiseGenome(genomeA[0]))
-      genome.push(randomiseGenome(genomeB[1]))
+      genome.push(calculateChildGene(geneA[0]))
+      genome.push(calculateChildGene(geneB[1]))
     } else {
-      genome.push(randomiseGenome(genomeB[0]))
-      genome.push(randomiseGenome(genomeA[1]))
+      genome.push(calculateChildGene(geneB[0]))
+      genome.push(calculateChildGene(geneA[1]))
     }
   }
 
