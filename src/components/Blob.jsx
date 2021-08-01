@@ -19,8 +19,7 @@ export const Blob = ({ genome, label, onClick }) => {
       <div className="blob">
         <Pikachu {...props} />
         <div className="blob__label">
-          <span>{label}</span>
-          <span>{`(${r1},${g1},${b1})`}</span>
+          <pre className="blob__genome">{label}</pre>
         </div>
       </div>
     </div>

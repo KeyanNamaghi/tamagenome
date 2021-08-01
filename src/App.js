@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import './App.css'
 import { genomeAlpha, genomeBeta } from './assets/mockData'
 import { Blob } from './components/Blob'
 import { createNewGenome } from './scripts/breed'
+import { toText } from './scripts/utils'
+import './App.css'
 
 function App() {
   const [you, setYou] = useState(genomeAlpha)
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <strong style={{ marginTop: '20px' }}>{`Generation: ${generation}`}</strong>
-      <Blob genome={you} label={JSON.stringify(you)} />
+      <Blob genome={you} label={toText(you)} />
       <div className="blob__container">{children}</div>
     </div>
   )

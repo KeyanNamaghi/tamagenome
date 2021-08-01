@@ -29,3 +29,10 @@
   padding: 20px;
   margin: 20px;
 }
+
+.blob__genome {
+  white-space: pre-wrap;
+  overflow-x: auto;
+  width: max-content;
+  text-align: justify;
+}
