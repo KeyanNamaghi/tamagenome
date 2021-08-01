@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import './App.css'
-import { genomeA, genomeB } from './assets/mockData'
+import { genomeAlpha, genomeBeta } from './assets/mockData'
 import { Blob } from './components/Blob'
-import { createNewGene } from './scripts/breed'
+import { createNewGenome } from './scripts/breed'
 
 function App() {
-  const [you, setYou] = useState(genomeA)
-  const [partner, setPartner] = useState(genomeB)
+  const [you, setYou] = useState(genomeAlpha)
+  const [partner, setPartner] = useState(genomeBeta)
   const [generation, setGeneration] = useState(1)
   const children = []
 
@@ -17,7 +17,7 @@ function App() {
   }
 
   for (let i = 0; i < 24; i++) {
-    const newGenome = createNewGene(you, partner)
+    const newGenome = createNewGenome(you, partner)
     children.push(<Blob genome={newGenome} key={`blob-${i}`} onClick={() => setNextGen(newGenome)} />)
   }
 

@@ -15,29 +15,40 @@ const calculateChildGene = (gene) => {
 
 const fiftyFiftyChance = () => Math.random() > 0.5
 
-export const createNewGene = (geneA, geneB) => {
+const createNewGene = (geneA, geneB) => {
   let domA = fiftyFiftyChance()
   let domB = fiftyFiftyChance()
-  const genome = []
+  const gene = []
 
   if ((domA && domB) || (!domA && !domB)) {
     // Equal priority in ordering
     if (fiftyFiftyChance()) {
-      genome.push(calculateChildGene(geneA[domA ? 0 : 1]))
-      genome.push(calculateChildGene(geneB[domA ? 0 : 1]))
+      gene.push(calculateChildGene(geneA[domA ? 0 : 1]))
+      gene.push(calculateChildGene(geneB[domA ? 0 : 1]))
     } else {
-      genome.push(calculateChildGene(geneB[domA ? 0 : 1]))
-      genome.push(calculateChildGene(geneA[domA ? 0 : 1]))
+      gene.push(calculateChildGene(geneB[domA ? 0 : 1]))
+      gene.push(calculateChildGene(geneA[domA ? 0 : 1]))
     }
   } else {
     if (domA) {
-      genome.push(calculateChildGene(geneA[0]))
-      genome.push(calculateChildGene(geneB[1]))
+      gene.push(calculateChildGene(geneA[0]))
+      gene.push(calculateChildGene(geneB[1]))
     } else {
-      genome.push(calculateChildGene(geneB[0]))
-      genome.push(calculateChildGene(geneA[1]))
+      gene.push(calculateChildGene(geneB[0]))
+      gene.push(calculateChildGene(geneA[1]))
     }
   }
 
-  return genome
+  return gene
+}
+
+export const createNewGenome = (genomeA, genomeB) => {
+  const newGenome = {}
+
+  newGenome.primaryColour = createNewGene(genomeA.primaryColour, genomeB.primaryColour)
+  newGenome.secondaryColour = createNewGene(genomeA.secondaryColour, genomeB.secondaryColour)
+  newGenome.tertiaryColour = createNewGene(genomeA.tertiaryColour, genomeB.tertiaryColour)
+  newGenome.quaternaryColour = createNewGene(genomeA.quaternaryColour, genomeB.quaternaryColour)
+
+  return newGenome
 }

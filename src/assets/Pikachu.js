@@ -1,10 +1,10 @@
-export const Pikachu = ({ secondary }) => {
-  const primaryColour = 'rgb(253,230,47)'
-  const primaryShadow = 'rgb(191,168,105)'
+export const Pikachu = ({ primary, primaryShadow, secondary, tertiary, quaternary }) => {
+  const primaryColour = primary || 'rgb(253,230,47)'
+  const primaryShadowColour = primaryShadow || 'rgb(191,168,105)'
   // const primaryShadow = 'rgb(125,115,24)'
   const secondaryColour = secondary || '#rgb(207,66,86)'
-  const tertiaryColour = '#925252'
-  const quaternaryColour = '#000000'
+  const tertiaryColour = tertiary || '#925252'
+  const quaternaryColour = quaternary || '#000000'
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="1145.22 358.54 188.64 324.4" width="100px">
