@@ -4,13 +4,27 @@ function getRandomInt(val, range) {
   return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 }
 
+function getRandomPercent(val, range) {
+  const min = Math.ceil(val - range >= 0 ? val - range : 0)
+  const max = Math.floor(val + range <= 100 ? val + range : 100)
+  return Math.random() * (max - min) + min
+}
+
 const calculateChildGene = (gene) => {
-  return {
-    r: getRandomInt(gene.r, gene.range),
-    g: getRandomInt(gene.g, gene.range),
-    b: getRandomInt(gene.b, gene.range),
-    range: gene.range
+  if (gene.r !== undefined) {
+    return {
+      r: getRandomInt(gene.r, gene.range),
+      g: getRandomInt(gene.g, gene.range),
+      b: getRandomInt(gene.b, gene.range),
+      range: gene.range
+    }
+  } else if (gene.scale !== undefined) {
+    return {
+      scale: getRandomPercent(gene.scale, gene.range),
+      range: gene.range
+    }
   }
+  console.error(gene)
 }
 
 const fiftyFiftyChance = () => Math.random() > 0.5
@@ -49,6 +63,8 @@ export const createNewGenome = (genomeA, genomeB) => {
   newGenome.secondaryColour = createNewGene(genomeA.secondaryColour, genomeB.secondaryColour)
   newGenome.tertiaryColour = createNewGene(genomeA.tertiaryColour, genomeB.tertiaryColour)
   newGenome.quaternaryColour = createNewGene(genomeA.quaternaryColour, genomeB.quaternaryColour)
+  newGenome.noseSize = createNewGene(genomeA.noseSize, genomeB.noseSize)
+  newGenome.eyeSize = createNewGene(genomeA.eyeSize, genomeB.eyeSize)
 
   return newGenome
 }

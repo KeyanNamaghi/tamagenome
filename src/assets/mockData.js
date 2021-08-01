@@ -89,6 +89,26 @@ export const genomeAlpha = {
       b: 2,
       range: 4
     }
+  ],
+  eyeSize: [
+    {
+      scale: 0,
+      range: 5
+    },
+    {
+      scale: 0,
+      range: 5
+    }
+  ],
+  noseSize: [
+    {
+      scale: 0,
+      range: 5
+    },
+    {
+      scale: 0,
+      range: 5
+    }
   ]
 }
 
@@ -151,6 +171,26 @@ export const genomeBeta = {
       g: 2,
       b: 2,
       range: 2
+    }
+  ],
+  eyeSize: [
+    {
+      scale: 0,
+      range: 5
+    },
+    {
+      scale: 10,
+      range: 5
+    }
+  ],
+  noseSize: [
+    {
+      scale: 10,
+      range: 10
+    },
+    {
+      scale: 20,
+      range: 5
     }
   ]
 }
