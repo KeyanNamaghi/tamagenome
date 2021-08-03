@@ -36,3 +36,7 @@
   width: max-content;
   text-align: justify;
 }
+
+.canvas-container {
+  height: 70vh;
+}

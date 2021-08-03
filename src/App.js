@@ -1,33 +1,19 @@
-import React, { useState } from 'react'
-import { genomeAlpha, genomeBeta } from './assets/mockData'
-import { Blob } from './components/Blob'
-import { createNewGenome } from './scripts/breed'
-import { toText } from './scripts/utils'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import BlobPage from './components/BlobPage'
+import Three from './components/Three'
 import './App.css'
 
 function App() {
-  const [you, setYou] = useState(genomeAlpha)
-  const [partner, setPartner] = useState(genomeBeta)
-  const [generation, setGeneration] = useState(1)
-  const children = []
-
-  const setNextGen = (newGenome) => {
-    setGeneration(generation + 1)
-    setYou(newGenome)
-    setPartner(newGenome)
-  }
-
-  for (let i = 0; i < 24; i++) {
-    const newGenome = createNewGenome(you, partner)
-    children.push(<Blob genome={newGenome} key={`blob-${i}`} onClick={() => setNextGen(newGenome)} />)
-  }
-
   return (
-    <div className="App">
-      <strong style={{ marginTop: '20px' }}>{`Generation: ${generation}`}</strong>
-      <Blob genome={you} label={toText(you)} />
-      <div className="blob__container">{children}</div>
-    </div>
+    <Switch>
+      <Route path="/3d">
+        <Three />
+      </Route>
+      <Route path="/">
+        <BlobPage />
+      </Route>
+    </Switch>
   )
 }
 
